@@ -2,3 +2,5 @@ node_modules
 *Notes.md
 package-lock.json
 .DS_Store
+react-web/src/.DS_Store
+react-web/.DS_Store

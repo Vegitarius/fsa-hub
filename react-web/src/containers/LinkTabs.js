@@ -16,6 +16,7 @@ const styles = theme => ({
         backgroundColor: theme.palette.background.paper
     }
 });
+const query = `*[_type == 'algorithmsSchema' || _type == 'gitSchema' || _type == 'nativeSchema' || _type == 'webSchema' || _type == 'backEndSchema' || _type == 'commandLineSchema' || _type == 'javascriptSchema' || _type == 'gitSchema' || _type == 'awsSchema' || _type == 'securitySchema'  ]{_type, text, title, url}`;
 
 class LinkTabs extends Component {
     constructor(props) {
