@@ -3,6 +3,9 @@ import Amplify, { Auth, API } from "aws-amplify";
 import awsmobile from "./aws-exports"
 import config from "./config";
 import { Font, AppLoading } from "expo";
+import appSyncConfig from "./src/aws-exports";
+import AWSAppSyncClient from "aws-appsync";
+
 
 import AppNavigator from './config/navigation'
 
@@ -19,6 +22,15 @@ class App extends Component {
             Roboto: require("native-base/Fonts/Roboto.ttf"),
             Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
           });
+        const client = new AWSAppSyncClient({
+            url: appSyncConfig.aws_appsync_graphqlEndpoint,
+            region: appSyncConfig.aws_appsync_region,
+            auth: {
+              type: appSyncConfig.aws_appsync_authenticationType,
+              apiKey: appSyncConfig.aws_appsync_apiKey,
+            }
+          });
+        console.log('GraphQL info: ', client)
 
     }
 
@@ -48,6 +60,10 @@ class App extends Component {
       });
     //   console.log('Result: ', result);
       }
+
+      
+
+    
 
     render() {
         return (
