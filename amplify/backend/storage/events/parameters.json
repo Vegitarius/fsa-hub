@@ -1,0 +1,7 @@
+{
+    "tableName": "events",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S",
+    "sortKeyName": "CreatedAt",
+    "sortKeyType": "N"
+}

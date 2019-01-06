@@ -1,48 +1,60 @@
 {
-  "providers": {
-    "awscloudformation": {
-      "AuthRoleName": "fsahub-20181225150125-authRole",
-      "UnauthRoleArn": "arn:aws:iam::989853312915:role/fsahub-20181225150125-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::989853312915:role/fsahub-20181225150125-authRole",
-      "Region": "us-west-2",
-      "DeploymentBucketName": "fsahub-20181225150125-deployment",
-      "UnauthRoleName": "fsahub-20181225150125-unauthRole",
-      "StackName": "fsahub-20181225150125",
-      "StackId": "arn:aws:cloudformation:us-west-2:989853312915:stack/fsahub-20181225150125/01c3abd0-0899-11e9-bd57-025219eb189a"
-    }
-  },
-  "auth": {
-    "fsa": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/fsahub-20181225150125-deployment/amplify-cfn-templates/auth/fsa-cloudformation-template.yml",
-        "logicalId": "authfsa"
-      },
-      "lastPushTimeStamp": "2019-01-06T18:55:35.153Z",
-      "output": {
-        "CreatedSNSRole": "arn:aws:iam::989853312915:role/fsa_sns-role",
-        "AppClientSecret": "1mb4k0l18krbk9ilml3bdbar853k92aa0igjnfus0u382b4si3ki",
-        "UserPoolId": "us-west-2_tFhRE5TRe",
-        "AppClientIDWeb": "1qqt8uh146epjiotlqs27l6ml1",
-        "AppClientID": "65l34evhss7beuhedk8ee67p0q",
-        "IdentityPoolId": "us-west-2:cbb675a9-885e-44f1-baa5-4cb0243db6a0",
-        "IdentityPoolName": "fsahubaa54e2df_identitypool_aa54e2df",
-        "UserPoolName": "fsaed"
-      },
-      "lastPushDirHash": "GJDVEiPyk815CjwlEc8YUavZb70="
-    }
-  },
-  "api": {
-    "FSA Calendar": {
-      "service": "AppSync",
-      "output": {
-        "securityType": "API_KEY",
-        "GraphQLAPIIdOutput": "qwvqfhzfxrbkxf74mjjwai7i7u",
-        "GraphQLAPIEndpointOutput": "https://kc3txk6tkrcarexicqh35tlxhq.appsync-api.us-west-2.amazonaws.com/graphql",
-        "GraphQLAPIKeyOutput": "da2-qzdc77j6fvantcvj2tj7bw5tmm"
-      },
-      "lastPushTimeStamp": "2019-01-06T18:58:38.386Z"
-    }
-  }
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "fsahub-20181225150125-authRole",
+			"UnauthRoleArn": "arn:aws:iam::989853312915:role/fsahub-20181225150125-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::989853312915:role/fsahub-20181225150125-authRole",
+			"Region": "us-west-2",
+			"DeploymentBucketName": "fsahub-20181225150125-deployment",
+			"UnauthRoleName": "fsahub-20181225150125-unauthRole",
+			"StackName": "fsahub-20181225150125",
+			"StackId": "arn:aws:cloudformation:us-west-2:989853312915:stack/fsahub-20181225150125/01c3abd0-0899-11e9-bd57-025219eb189a"
+		}
+	},
+	"auth": {
+		"fsa": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/fsahub-20181225150125-deployment/amplify-cfn-templates/auth/fsa-cloudformation-template.yml",
+				"logicalId": "authfsa"
+			},
+			"lastPushTimeStamp": "2019-01-06T18:55:35.153Z",
+			"output": {
+				"CreatedSNSRole": "arn:aws:iam::989853312915:role/fsa_sns-role",
+				"AppClientSecret": "1mb4k0l18krbk9ilml3bdbar853k92aa0igjnfus0u382b4si3ki",
+				"UserPoolId": "us-west-2_tFhRE5TRe",
+				"AppClientIDWeb": "1qqt8uh146epjiotlqs27l6ml1",
+				"AppClientID": "65l34evhss7beuhedk8ee67p0q",
+				"IdentityPoolId": "us-west-2:cbb675a9-885e-44f1-baa5-4cb0243db6a0",
+				"IdentityPoolName": "fsahubaa54e2df_identitypool_aa54e2df",
+				"UserPoolName": "fsaed"
+			},
+			"lastPushDirHash": "GJDVEiPyk815CjwlEc8YUavZb70="
+		}
+	},
+	"api": {},
+	"storage": {
+		"events": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"function": {
+		"events": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "events",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		}
+	}
 }
