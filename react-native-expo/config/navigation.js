@@ -59,15 +59,15 @@ const ChatStackNavigator = createStackNavigator({
 
 const AppTabNavigator = createBottomTabNavigator(
     {
-      // Sandbox: {
-      //   screen: SandboxScreen,
-      //   navigationOptions: {
-      //     tabBarLable: 'Sandbox',
-      //     tabBarIcon: ({ tintColor }) => (
-      //       <Ionicons name="ios-home" size={28} color={tintColor} />
-      //     ),
-      //   },
-      // },
+      Sandbox: {
+        screen: SandboxScreen,
+        navigationOptions: {
+          tabBarLable: 'Sandbox',
+          tabBarIcon: ({ tintColor }) => (
+            <Ionicons name="ios-home" size={28} color={tintColor} />
+          ),
+        },
+      },
       Home: {
         screen: HomeScreen,
         navigationOptions: {
@@ -156,14 +156,6 @@ const AppNavigator = createSwitchNavigator({
     Auth: AuthStackNavigator,
     App: AppDrawerNavigator,
     Knowledge: KnowledgeStackNavigator,
-});
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
 });
 
 export default createAppContainer(AppNavigator);
