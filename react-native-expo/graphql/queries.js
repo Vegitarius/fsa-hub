@@ -1,7 +1,8 @@
 // eslint-disable
 // this is an auto generated file. This will be overwritten
+import gql from "graphql-tag"
 
-export const getEvent = `query GetEvent($id: ID!) {
+export const getEvent = gql`query GetEvent($id: ID!) {
   getEvent(id: $id) {
     id
     name
@@ -20,7 +21,7 @@ export const getEvent = `query GetEvent($id: ID!) {
   }
 }
 `;
-export const listEvents = `query ListEvents(
+export const listEvents = gql`query ListEvents(
   $filter: TableEventFilterInput
   $limit: Int
   $nextToken: String
