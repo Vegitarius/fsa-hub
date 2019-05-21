@@ -1,11 +1,5 @@
 export const fullStackApprenticeship = [
     {
-        type: 'gettingStartedSchema',
-        name: 'Get Started',
-        description: 'Being your journey here. Start as an Apprentice, grow into a Developer, achieve mastery as an Engineer.',
-        tools: ['']
-    },
-    {
         type: 'nativeSchema',
         name: 'React Native',
         description: 'Build iOS & Android applications using only JavaScript, without losing any performance.',

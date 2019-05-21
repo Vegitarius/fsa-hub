@@ -21,8 +21,6 @@ export default class ChapterScreen extends Component {
   render() {
     
       const schema = this.props.navigation.getParam('schema', 'None')
-      const navigation = this.props.navigation.navigate;
-      // console.log('Navigation? : ', navigation)
       const title = schema.title;
       const subtitle = schema.subtitle;
       const overview = schema.overview;

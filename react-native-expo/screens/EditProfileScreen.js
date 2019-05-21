@@ -38,7 +38,6 @@ export default class EditProfileScreen extends Component {
         const mentors = await API.get('fsa', '/mentors')
         this.setState({ mentors: mentors })
         const notificationToken = await Notifications.getExpoPushTokenAsync();
-        console.log('Notification Token: ', notificationToken)
         this.setState({ expo: notificationToken })
     }
 

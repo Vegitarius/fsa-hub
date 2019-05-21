@@ -14,6 +14,8 @@ import store from '../store/configureStore';
 import {changeTab} from "../actions/tab"
 import { Redirect } from 'react-router'
 
+import _ from 'lodash';
+
 
 const styles = {
     root: {
@@ -61,7 +63,9 @@ export default class ToolsContainer extends Component {
 
     async componentDidMount() {
         const query = `*[_type == '${this.props.match.params.schema}']{type, _type, text, title, priority, url, _id}`
-        const links = await sanity.fetch(query);
+        const links = await sanity.fetch(query).then(result => {
+          return _.orderBy(result,['priority']['title'],['desc'])
+        });
         this.setState({ links })
     }
 
@@ -86,7 +90,7 @@ export default class ToolsContainer extends Component {
         this.state.filteredLinks.length < 1 ? linksToDisplay = this.state.links : linksToDisplay = this.state.filteredLinks;
         const schema = window.location.pathname.split('/')[2];
         const activeTab = this.state.activeTab;
-        // const description = fullStackApprenticeship.find(o => o.type === schema);
+        const description = fullStackApprenticeship.find(o => o.type === schema);
 
         if( this.state.redirect ) 
           return <Redirect to='/'/>;
@@ -102,8 +106,8 @@ export default class ToolsContainer extends Component {
                 </Tabs>
               </AppBar>
             <TabContainer>
-                <SearchComponent handleSearch={this.handleSearch} />
-                {/* <h3>{description.description}</h3> */}
+                {/* <SearchComponent handleSearch={this.handleSearch} /> */}
+                { typeof description !== 'undefined' && typeof description.description !== 'undefined' && <h3>{description.description}</h3> } 
                 <Grid container className={styles.root} spacing={16}>
                     <ToolCard links={linksToDisplay} />
                 </Grid>

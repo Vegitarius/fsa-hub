@@ -45,11 +45,7 @@ export default class PaymentOptionsScreen extends React.Component {
   };
 
   async componentDidMount() {
-    const session = await Auth.currentSession()  
-
-    
-    Platform.OS === 'android' ? Permissions.askAsync(Permissions.NOTIFICATIONS) : console.log('No iOS')
-
+    const session = await Auth.currentSession();  
      
     try {
       const username = await session.accessToken.payload.username;

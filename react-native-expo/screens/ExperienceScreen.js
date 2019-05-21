@@ -25,6 +25,7 @@ class ExperienceScreen extends Component {
       async sanityQuery(schema) {
         const query = `*[_type == '${schema}']`
         const links = await sanity.fetch(query);
+        
         this.setState({ links })
       }
 
