@@ -19,10 +19,6 @@ export default class ReviewResourcesScreen extends Component {
     }
   }
 
-  // static navigationOptions = {
-  //   header: null,
-  // };
-
   async componentDidMount() {
     const response = await API.get('resources', `/resources/${this.state.searchingFor}`)
     let notReviewed = response.filter(resource => resource.approved === undefined)

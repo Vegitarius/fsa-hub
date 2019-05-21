@@ -199,10 +199,10 @@ class ReviewResourceFormScreen extends Component {
             </Item>
 
 
-            <Button onClick={this.handleFormApproval}>
+            <Button onPress={this.handleFormApproval}>
               Approve Resource
             </Button>
-            <Button onClick={this.handleFormDenial}>
+            <Button onPress={this.handleFormDenial}>
               Deny Resource
             </Button>
           </Form>
